@@ -1,0 +1,10 @@
+<!-- _includes/slideshow.html -->
+<div class="slideshow">
+  <div class="slideshow__wrapper">
+    {% for image in page.slideshow_images %}
+      <img src="{{ image }}" alt="Slideshow Image">
+    {% endfor %}
+  </div>
+  <button class="prev-button">Previous</button>
+  <button class="next-button">Next</button>
+</div>

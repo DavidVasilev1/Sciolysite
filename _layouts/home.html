@@ -24,54 +24,29 @@ default_num | minus: 1 %} {% if default_num > 0 %} {% for i in
 (default_beg..default_end) %} {% assign posts = posts | push: default[i] %} {%
 endfor %} {% endif %}
 
-<!-- fix organization of slideshow later lol -->
-<div class="slideshow-container">
-  <!-- Slide 1 -->
-  <div class="slide">
-    <img src="/assets/img/banner_images/image.png" alt="Image 1">
-    <div class="caption">Caption for Image 1</div>
-  </div>
 
-  <!-- Slide 2 -->
-  <div class="slide">
-    <img src="/assets/img/banner_images/image.png" alt="Image 2">
-    <div class="caption">Caption for Image 2</div>
-  </div>
-
-  <!-- Add more slides as needed -->
-
-  <!-- Previous and Next buttons -->
-  <a class="prev" onclick="changeSlide(-1)">❮</a>
-  <a class="next" onclick="changeSlide(1)">❯</a>
-</div>
-  <script>
-    let currentSlide = 0;
-    showSlide(currentSlide);
-
-    function changeSlide(n) {
-      showSlide((currentSlide += n));
-    }
-
-    function showSlide(n) {
-      const slides = document.getElementsByClassName("slide");
-
-      if (n >= slides.length) {
-        currentSlide = 0;
-      } else if (n < 0) {
-        currentSlide = slides.length - 1;
-      }
-
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-
-      slides[currentSlide].style.display = "block";
-    }
-  </script>
-</div>
 
 <!-- posts -->
 <div id="post-list">
+  <script src="{{ site.baseurl }}/assets/js/pages/slideshow.js"></script>
+  <style>
+    .slideshow {
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .slideshow__wrapper {
+      display: flex; /* Display images in a row */
+      transition: transform 0.3s ease-in-out; /* Animation transition */
+    }
+    
+    .slideshow__wrapper img {
+      width: 100%;
+      height: auto;
+    }    
+  </style>
+  {% include slideshow.html images=page.images %}
+
   {% for post in posts %}
   <a href="{{ post.url | relative_url }}" class="card-wrapper">
     <div class="card post-preview flex-md-row-reverse">
