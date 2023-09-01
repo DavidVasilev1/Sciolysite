@@ -1,5 +1,5 @@
 ---
 layout: photoGallery
-icon: fas fa-stream
+icon: fas fa-solid fa-camera
 order: 2
 ---

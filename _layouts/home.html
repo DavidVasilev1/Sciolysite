@@ -29,8 +29,10 @@ endfor %} {% endif %}
 
 <!-- posts -->
 <div id="post-list">
-  <img src="/assets/img/banner_images/banner.png">
-
+  <div class="shadow">
+    <img src="/assets/img/banner_images/banner.png">
+  </div>
+    
   {% for post in posts %}
   <a href="{{ post.url | relative_url }}" class="card-wrapper">
     <div class="card post-preview flex-md-row-reverse">
