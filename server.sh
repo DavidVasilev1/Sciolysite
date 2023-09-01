@@ -18,7 +18,7 @@ function server () {
     stop
     jekyll clean
     echo "Starting server..."
-    bundle exec jekyll serve --livereload
+    bundle exec jekyll serve
 }
 
 server

@@ -3,6 +3,8 @@ layout: page
 refactor: true
 ---
 
+
+
 {% include lang.html %} {% assign pinned = site.posts | where: 'pin', 'true' %}
 {% assign default = site.posts | where_exp: 'item', 'item.pin != true and
 item.hidden != true' %} {% assign posts = '' | split: '' %}
@@ -25,27 +27,9 @@ default_num | minus: 1 %} {% if default_num > 0 %} {% for i in
 endfor %} {% endif %}
 
 
-
 <!-- posts -->
 <div id="post-list">
-  <script src="{{ site.baseurl }}/assets/js/pages/slideshow.js"></script>
-  <style>
-    .slideshow {
-      width: 100%;
-      overflow: hidden;
-    }
-    
-    .slideshow__wrapper {
-      display: flex; /* Display images in a row */
-      transition: transform 0.3s ease-in-out; /* Animation transition */
-    }
-    
-    .slideshow__wrapper img {
-      width: 100%;
-      height: auto;
-    }    
-  </style>
-  {% include slideshow.html images=page.images %}
+  <img src="/assets/img/banner_images/banner.png">
 
   {% for post in posts %}
   <a href="{{ post.url | relative_url }}" class="card-wrapper">

@@ -1,5 +1,5 @@
 ---
-layout: categories
+layout: photoGallery
 icon: fas fa-stream
 order: 2
 ---

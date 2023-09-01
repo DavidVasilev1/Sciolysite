@@ -1,10 +1,84 @@
-<!-- _includes/slideshow.html -->
-<div class="slideshow">
-  <div class="slideshow__wrapper">
-    {% for image in page.slideshow_images %}
-      <img src="{{ image }}" alt="Slideshow Image">
+<style>
+  .carousel {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Adjust the max-width as needed */
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .carousel img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .carousel-inner {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .carousel-item {
+    flex: 0 0 100%;
+  }
+
+  .carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .carousel-control {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 50%;
+  }
+</style>
+
+<div class="carousel" id="carousel_example">
+  <div class="carousel-inner">
+    {% assign images = [
+      "/assets/img/banner_images/image.PNG",
+      "/assets/img/banner_images/image2.PNG",
+      "/assets/img/banner_images/image3.PNG"
+    ] %}
+    
+    {% for image in images %}
+      <div class="carousel-item">
+        <img class="img-fluid" src="{{ image }}" alt="Slide {{ forloop.index }}">
+      </div>
     {% endfor %}
   </div>
-  <button class="prev-button">Previous</button>
-  <button class="next-button">Next</button>
+
+  <div class="carousel-controls">
+    <div class="carousel-control" onclick="prevSlide()">&#9664;</div>
+    <div class="carousel-control" onclick="nextSlide()">&#9654;</div>
+  </div>
 </div>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.carousel-item');
+
+  function showSlide(index) {
+    slides[currentSlide].style.display = 'none';
+    slides[index].style.display = 'block';
+    currentSlide = index;
+  }
+
+  function prevSlide() {
+    const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(prevIndex);
+  }
+
+  function nextSlide() {
+    const nextIndex = (currentSlide + 1) % slides.length;
+    showSlide(nextIndex);
+  }
+
+  // Automatically advance the carousel (optional)
+  setInterval(nextSlide, 10000); // Change slide every 10 seconds
+</script>
